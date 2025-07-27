@@ -1,4 +1,3 @@
-
 // setting variables:
 
 let taskInput = document.querySelector(".addTask input");
@@ -11,9 +10,7 @@ let filters = document.querySelectorAll(".filter");
 
 
 
-
-// ADDING TASKS:
-
+// Adding a task when the user clicks the add icon
 addTask.onclick = function addingATask(){
     if(taskInput.value !== ""){
 
@@ -32,10 +29,47 @@ addTask.onclick = function addingATask(){
         taskInput.focus();
 
     }else{
-        console.log("input is void!!!!!!!!!!");
+        Swal.fire({
+            icon: 'warning',
+            title: 'Oops!',
+            text: 'You gotta type something first!',
+            confirmButtonColor: '#f87171',
+        });
     }
 }
+// Adding a task when the user presses the Enter key
 
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+        
+        e.preventDefault();
+        
+        if(taskInput.value !== ""){
+
+        let taskVal = taskInput.value;
+        let status = "pending";
+
+        let tasksArr = getStoredTasks(); 
+
+        tasksArr.push({text: taskVal , status: status});
+
+        localStorage.setItem("tasks",JSON.stringify(tasksArr));
+
+        creatingtasks(taskVal,status);
+
+        taskInput.value = "";
+        taskInput.focus();
+
+    }else{
+        Swal.fire({
+            icon: 'warning',
+            title: 'Oops!',
+            text: 'You gotta type something first!',
+            confirmButtonColor: '#f87171',
+        });
+    }
+    }
+});
 
 // FUNCTIONS
 
