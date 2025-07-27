@@ -27,7 +27,7 @@ A simple and cute to-do list app to help you stay organized . Add tasks, mark th
 
 ## Demo 🎥
 
-You can view the live version of this app [here](https://your-username.github.io/kawaii-todo).
+You can view the live version of this app [here](https://ayakhellou.github.io/to-do-list-app-/).
 
 ##💖 About Me
 
