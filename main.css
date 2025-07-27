@@ -19,9 +19,9 @@ body{
     width: 500px;
     margin: 10px auto;
 }
-@media (max-width: 600px) {
+@media (max-width: 510px) {
     .container {
-        width: 90%;
+        width: 100%;
     }
 }
 
@@ -32,6 +32,11 @@ body{
     background-color: var(--mainDeepColor);
     border-radius: 30px;
     margin-top: 50px;
+    padding-inline: 12px;
+    text-align: center;
+}
+.container .quote p{
+    margin: 15px;
 }
 .container .toDo{
     background-color: var(--mainDeepColor);
@@ -40,8 +45,14 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    padding: 30px;
+    padding-block: 30px;
+    padding-inline: 20px;
     border-radius: 30px;
+}
+@media (max-width: 460px) {
+    .container .toDo{
+        padding-inline: 15px;
+    }
 }
 .container .toDo .addTask{
     background-color: var(--mainLightColor);
@@ -76,7 +87,7 @@ body{
 .container .toDo .tasks{
     margin: 20px;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 10px;
 }
 .container .toDo .tasks .task{
     display: flex;
