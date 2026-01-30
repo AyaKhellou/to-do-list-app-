@@ -1,4 +1,4 @@
-# Kawaii To-Do List 🌸✨
+# To-Do List App✨
 
 A simple and cute to-do list app to help you stay organized . Add tasks, mark them as done, and keep track of everything with smooth transitions and gentle animations.
 

@@ -3,159 +3,222 @@
 }
 
 :root{
-    --mainDeepColor: #e8dcf4;
-    --mainLightColor: #fffefb;
-    --firstIconColor: #f095c7d9;
-    --secondIconColor: #d367a2d9;
+    --hoverColor: #6A4AE3;
+    --accentColor: #7C5CFF;
+    --cardsMainColor: #ffffff;
+    --mainTextColor: #1F2937;
+    --secondaryTextColor: #6B7280;
+    --background-image: radial-gradient(circle at center, #ffffff, #f7e4ffb1);
 }
 body{
-    background-image: url('https://i.pinimg.com/736x/cf/33/00/cf3300f53502e10af7111ff178cb1309.jpg');
-    background-size: contain;
-    background-position: center;
-    font-family: "Itim", cursive;
-    background-color: #f8f4e9;
+    background-image: var(--background-image);
+    font-family: "Inter", sans-serif;
 }
 .container{
-    width: 500px;
-    margin: 10px auto;
+    margin: 20px auto;
+    max-width: 800px;
 }
-@media (max-width: 510px) {
-    .container {
-        width: 100%;
-    }
+/* TITLE STYLES */
+.container .title{
+    text-align: center;
+    margin-bottom: 20px;
 }
-
+.container .title h2{
+    font-weight: 700;
+    font-size: 32px;
+    color: var(--mainTextColor);
+}
+.container .title h2 i{
+    color: var(--accentColor);
+    margin-right: 10px;
+}
+.container .title p{
+    color: var(--secondaryTextColor);
+    font-size: 16px;
+    margin-top: 5px;
+}
+/* QUOTE GENERATOR STYLES */
 .container .quote{
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: var(--mainDeepColor);
-    border-radius: 30px;
+    justify-content: space-between;
+    background-color: var(--cardsMainColor);
+    border-radius: 10px;
     margin-top: 50px;
-    padding-inline: 12px;
-    text-align: center;
+    padding: 12px 20px;
+    color: var(--mainTextColor);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 .container .quote p{
-    margin: 15px;
+    font-size: 16px;
 }
+.container .quote .generate-quote{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--secondaryTextColor);
+}
+.container .quote .generate-quote:hover{
+    color: var(--mainTextColor);
+}
+/* TO DO LIST STYLES */
 .container .toDo{
-    background-color: var(--mainDeepColor);
     margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    padding-block: 30px;
-    padding-inline: 20px;
-    border-radius: 30px;
+    justify-content: space-between;
 }
-@media (max-width: 460px) {
-    .container .toDo{
-        padding-inline: 15px;
-    }
-}
+/* form styles */
 .container .toDo .addTask{
-    background-color: var(--mainLightColor);
+    background-color: var(--cardsMainColor);
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 10px;
-    border-radius: 25px;
-    border: 3px solid #CE9DD7;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--accentColor);
 }
 .container .toDo .addTask input{
+    background-color:#e9ebed;
     border: none;
     outline: none;
-    height: 100%;
-    font-size: 15px;
-    background-color: var(--mainLightColor);
+    font-size: 16px;
+    color: var(--mainTextColor);
     width: 90%;
-    margin-left: 10px;
+    margin-right: 10px;
+    padding: 8px 12px;
+    border-radius: 5px;
 }
-.container .toDo .addTask i{
-    margin-right: 15px;
-    margin-top: 1px;
+.container .toDo .addTask button{
+    background-color: var(--mainTextColor);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 16px;
+    color: var(--cardsMainColor);
     cursor: pointer;
-    font-size: 20px;
-    color: var(--firstIconColor);
-    transition: color 0.2s ease;
 }
-.container .toDo .addTask i:hover{
-    color: var(--secondIconColor);
+.container .toDo .addTask button:hover{
+    background-color: #373737;
 }
-/* ----------------------------------------------------- */
-.container .toDo .tasks{
+/* tasks styles */
+.container .toDo .tasks-container{
+    background-color: transparent;
     margin: 20px;
     width: 100%;
     padding: 0 10px;
 }
-.container .toDo .tasks .task{
+.container .toDo .tasks-container .section-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 0;
-    padding: 10px 20px;
+    color: var(--mainTextColor);
+}
+.container .tasks-container .section-header .filters{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.container .tasks-container .section-header .filters .filter{
+    background-color: transparent;
+    color: var(--mainTextColor);
+    border: 1px solid var(--mainTextColor);
+    border-radius: 5px;
+    padding: 5px 10px;
     cursor: pointer;
     transition: all 0.3s linear;
-    border-radius: 25px;
-    background-color: var(--mainLightColor);
-    max-height: 100px;
-    overflow: hidden;
+}
+.container .tasks-container .section-header .filters .filter:hover,
+.container .tasks-container .section-header .filters .filter.clicked{
+    background-color: var(--accentColor);
+    border-color: transparent;
+    color: var(--cardsMainColor);
+}
+/* tasks container */
+.container .tasks-container .tasks{
+    margin-top: 20px;
+}
+.container .tasks-container .tasks.empty{
+    margin-top: 20px;
+    background-color: var(--cardsMainColor);
+    border-radius: 10px;
+    border: 1px dashed var(--accentColor);
+}
+.container .tasks-container .tasks.empty::before{
+    content: "No tasks yet. Add one to get started!";
+    display: block;
+    text-align: center;
+    padding: 20px;
+    color: var(--secondaryTextColor);
+    font-size: 16px;
+}
+
+.container .tasks-container .tasks .task{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: var(--cardsMainColor);
+    transition: all 0.1s linear;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.container .tasks-container .tasks .task:hover{
+    border: 1px solid var(--accentColor);
+}
+.container .tasks-container .tasks .task i{
+    font-size: 16px;
+    color: var(--secondaryTextColor);
+    transition: color 0.2s ease;
+    margin-left: auto;
+}
+.container .tasks-container .tasks .task .task-name{
+    margin-left: 15px;
+}
+.container .tasks-container .tasks .task i:hover{
+    color: #f94449;
 }
 
 /* style when task is done */
-.container .toDo .tasks .task.done{
+.container .tasks-container .tasks .task.done{
     position: relative;
     opacity: 50%;
     transition: all 0.3s linear;
 }
-.container .toDo .tasks .task.done::after{
-    content: "";
-    position: absolute;
-    background-color: rgb(171, 169, 169);
-    width: 90%;
-    height: 3px;
-    left: 5%;
-    border-radius: 10px;
-}
-.container .toDo .tasks .task i{
-    font-size: 20px;
-    color: var(--firstIconColor);
-    transition: color 0.2s ease;
-}
-.container .toDo .tasks .task i:hover{
-    color: var(--secondIconColor);
+.container .tasks-container .tasks .task.done .task-name{
+    text-decoration: line-through;
 }
 
-.container .toDo .tasks .task.hidden{
+.container .tasks-container .tasks .task.hidden{
     max-height: 0;
     opacity: 0;
     pointer-events: none;
     margin: 0;
     padding: 0;
 }
-/* --------------------------------------------------------------------- */
-.container .toDo .filters{
+
+.container .tasks-container .tasks .task .check-icon{
+    width: 25px;
+    height: 25px;
+    border: 2px solid var(--mainTextColor);
+    border-radius: 50%;
     display: flex;
-    background-color: var(--mainLightColor);
-    border: 2px solid #CE9DD7;
-    border-radius: 30px;
+    align-items: center;
+    justify-content: center;
 }
-.container .toDo .filters .filter{
-    background-color: var(--mainLightColor);
-    border: 2px solid #CE9DD7;
-    border-radius: 20px;
-    margin: 5px;
-    padding: 5px;
-    cursor: pointer;
-    transition: all 0.3s linear;
+.container .tasks-container .tasks .task.done .check-icon{
+    background-color: var(--accentColor);
+    border: none;
 }
-.container .toDo .filters .filter:hover{
-    background-color: #ffe3f2;
-
+.container .tasks-container .tasks .task.done .check-icon::after{
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 15px;
+    color: var(--cardsMainColor);
 }
-.container .toDo .filters .filter.clicked{
-    background-color: #ffe3f2;
-}
-/* --------------------------------------------------------------------------------------- */
-

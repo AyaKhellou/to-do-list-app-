@@ -11,28 +11,46 @@
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <!-- sweetalert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body>
     <div class="container">
+        <div class="title">
+            <h2>
+                <i class="fa-regular fa-circle-check"></i>
+                My To-Do List
+            </h2>
+            <p>Stay organized and motivated</p>
+        </div>
         <div class="quote">
-            🌸<p> one step at a time </p>🌸
+            <p></p>
+            <button class="generate-quote" title="generate new quote">
+                <i class="fa-solid fa-rotate"></i>
+            </button>
         </div>
         <div class="toDo">
-            <div class="addTask">
+            <form class="addTask">
                 <input type="text" name="task" id="task" placeholder="Add task" autofocus>
-                <i class="fa-solid fa-plus" title="plus mark"></i>
-            </div>
-            <div class="tasks">
-            </div>
-            <div class="filters">
-                <div class="filter all">all</div>
-                <div class="filter pending">pending</div>
-                <div class="filter done">done</div>
-            </div>
+                <button type="submit">
+                    <i class="fa-solid fa-plus" title="plus mark"></i>
+                </button>
+            </form>
+            <section class="tasks-container">
+                <div class="section-header">
+                    <h3>Tasks</h3>
+                    <div class="filters">
+                        <div class="filter all">all</div>
+                        <div class="filter pending">pending</div>
+                        <div class="filter done">done</div>
+                    </div>
+                </div>
+                <div class="tasks">
+                    <!-- tasks will be added here dynamically -->
+                </div>
+            </section>
         </div>
     </div>
     <script src="main.js"></script>

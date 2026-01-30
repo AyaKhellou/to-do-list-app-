@@ -84,11 +84,17 @@ function creatingtasks(tv,status) {
     task.classList.add(status);
 
     let taskNameSpan = document.createElement("span");
+    taskNameSpan.className = "task-name";
 
     let taskName = document.createTextNode(tv);
 
     let icon = document.createElement("i");
-    icon.className = "fa-solid fa-xmark";
+    icon.className = "fa-regular fa-trash-can";
+
+    let check = document.createElement("span");
+    check.className = "check-icon";
+
+    task.appendChild(check);
 
     taskNameSpan.appendChild(taskName);
     task.appendChild(taskNameSpan);
