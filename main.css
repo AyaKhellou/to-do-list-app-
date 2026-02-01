@@ -41,7 +41,7 @@ body{
 .container .quote{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     background-color: var(--cardsMainColor);
     border-radius: 10px;
     margin-top: 50px;
@@ -51,16 +51,6 @@ body{
 }
 .container .quote p{
     font-size: 16px;
-}
-.container .quote .generate-quote{
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    color: var(--secondaryTextColor);
-}
-.container .quote .generate-quote:hover{
-    color: var(--mainTextColor);
 }
 /* TO DO LIST STYLES */
 .container .toDo{
@@ -137,7 +127,7 @@ body{
     border-color: transparent;
     color: var(--cardsMainColor);
 }
-/* tasks container */
+/* tasks list syles */
 .container .tasks-container .tasks{
     margin-top: 20px;
 }
@@ -183,6 +173,15 @@ body{
 .container .tasks-container .tasks .task i:hover{
     color: #f94449;
 }
+.container .tasks-container .tasks .task .check-icon{
+    width: 25px;
+    height: 25px;
+    border: 2px solid var(--mainTextColor);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 /* style when task is done */
 .container .tasks-container .tasks .task.done{
@@ -192,24 +191,6 @@ body{
 }
 .container .tasks-container .tasks .task.done .task-name{
     text-decoration: line-through;
-}
-
-.container .tasks-container .tasks .task.hidden{
-    max-height: 0;
-    opacity: 0;
-    pointer-events: none;
-    margin: 0;
-    padding: 0;
-}
-
-.container .tasks-container .tasks .task .check-icon{
-    width: 25px;
-    height: 25px;
-    border: 2px solid var(--mainTextColor);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 .container .tasks-container .tasks .task.done .check-icon{
     background-color: var(--accentColor);
@@ -221,4 +202,11 @@ body{
     font-weight: 900;
     font-size: 15px;
     color: var(--cardsMainColor);
+}
+.container .tasks-container .tasks .task.hidden{
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    margin: 0;
+    padding: 0;
 }

@@ -1,21 +1,27 @@
-# To-Do List App✨
+# To-Do List App
 
-A simple and cute to-do list app to help you stay organized . Add tasks, mark them as done, and keep track of everything with smooth transitions and gentle animations.
+## Overview
+
+This project is a clean, minimal to-do list application designed to help users organize daily tasks without visual clutter or cognitive overload.
+
+The goal was to build a practical productivity tool with a calm user experience, focusing on clarity, usability, and thoughtful UI feedback rather than feature overload.
 
 ## Features 📝
 
-- Add tasks and save them to **localStorage**
-- Mark tasks as **done** with a soft fade effect
-- Filter tasks by **all, pending, and done**
-- Cute **motivational quotes** that change randomly
+- Add, delete, and manage tasks with persistent localStorage support
+- Mark tasks as pending or completed with smooth visual feedback
+- Filter tasks by All, Pending, or Done
+- Display random motivational quotes to encourage consistency
+- Clean, responsive UI with subtle transitions and animations
 
 ## How to Use 💡
 
-1. Clone or download this repo
-2. Open `index.html` in your browser
-3. Add tasks to your list 📝
-4. Click the task to mark it as done 💖
-5. Filter tasks to view **pending** or **done** items
+1. Clone or download this repository
+2. Open index.html in your browser
+3. Add a task using the input field
+4. Click a task to toggle its completion state
+5. Use the filters to view all, pending, or completed tasks
+6. All tasks are automatically saved in the browser using localStorage.
 
 ## Technologies Used 🛠
 
@@ -25,16 +31,15 @@ A simple and cute to-do list app to help you stay organized . Add tasks, mark th
 - **JavaScript** for interactivity
 - **localStorage** to save tasks
 
-## Demo 🎥
+## Live Demo 
 
-You can view the live version of this app [here](https://ayakhellou.github.io/to-do-list-app-/).
+👉 (https://ayakhellou.github.io/to-do-list-app-/).
 
-##💖 About Me
+## About Me
 
-I'm Aya, a self-taught front-end developer from Algeria 🇩🇿
-This app is part of my portfolio & coding journey!
-follow me on [@__codaya__](https://www.instagram.com/__codaya__/) for more about my journey
+I’m Aya, a self-taught front-end developer from Algeria 🇩🇿.
+I focus on building clean, usable web applications and continuously improving through hands-on projects.
 
 ## Contact ✨
 
-If you have any questions, suggestions or feedback, feel free to reach out to me via GitHub issues or DM me via [@__codaya__](https://www.instagram.com/__codaya__/)
+If you have suggestions, feedback, or questions, feel free to open an issue on GitHub or reach out via [@__codaya__](https://www.instagram.com/__codaya__/)
