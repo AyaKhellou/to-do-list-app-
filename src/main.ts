@@ -1,13 +1,21 @@
 // setting variables:
-let taskInput = document.querySelector(".addTask input");
-let addTask = document.querySelector(".addTask i");
-let tasks = document.querySelector(".tasks");
-let filters = document.querySelectorAll(".filter");
-let quoteCont = document.querySelector(".quote p");
-let generateQuoteButton = document.querySelector(".quote button");
+const taskInput: HTMLInputElement | null = document.querySelector(".addTask input");
+const addTask: HTMLButtonElement| null = document.querySelector(".addTask button");
+const tasks: HTMLDivElement | null = document.querySelector(".tasks");
+const filters: NodeListOf<HTMLDivElement> | null = document.querySelectorAll(".filter");
+const quoteCont: HTMLParagraphElement | null = document.querySelector(".quote p");
 
+//types init:
+
+type Task = {
+    text: string ,
+    status: "pending" | "done"
+}
+type Quote = {
+    text: string
+}
 // EVENT LISTENERS
-addTask.addEventListener("click", addingATask);
+addTask?.addEventListener("click",(e)=> addingATask(e));
 document.addEventListener("keydown", function(e) {
     if (e.key === "Enter") {
         addingATask(e);
@@ -16,31 +24,34 @@ document.addEventListener("keydown", function(e) {
 
 // FUNCTIONS
 // ADDING A TASK FUNCTION
-function addingATask(e){
+
+function addingATask(e: Event):void{
     e.preventDefault();
-    if(taskInput.value.trim() !== ""){
-        let taskVal = taskInput.value.trim();
-        let status = "pending";
-        let tasksArr = getStoredTasks(); 
+    if(taskInput){
+        if(taskInput.value.trim() !== ""){
+            const taskVal = taskInput.value.trim();
+            const tasksArr = getStoredTasks(); 
 
-        tasksArr.push({text: taskVal , status: status});
-        saveTasks(tasksArr);
-        creatingtasks(taskVal,status);
-        taskInput.value = "";
-        taskInput.focus();
-    }else{
-        Swal.fire({
-            icon: 'warning',
-            text: 'You have to type something first!',
-            confirmButtonColor: '#7C5CFF',
-        });
+            tasksArr.push({text: taskVal , status: "pending"});
+
+            saveTasks(tasksArr);
+            creatingtasks({text:taskVal,status:"pending"});
+            taskInput.value = "";
+            taskInput.focus();
+        }else{
+            Swal.fire({
+                icon: 'warning',
+                text: 'You have to type something first!',
+                confirmButtonColor: '#7C5CFF',
+            });
+        }
     }
+    
 }
-
 // CREATING TASKS FUNCTION
 
-function creatingtasks(text,status) {
-    let task = document.createElement("div");
+function creatingtasks({text,status}:Task) {
+    const task = document.createElement("div");
 
     task.className = `task ${status}`;
     task.innerHTML= `
@@ -48,10 +59,10 @@ function creatingtasks(text,status) {
         <span class="task-name">${text}</span>
         <i class="fa-regular fa-trash-can delete"></i>
     `;
-    tasks.appendChild(task);
+    tasks?.appendChild(task);
 
-    let deleteIcon = task.querySelector("i.delete");
-    deleteIcon.addEventListener("click", e => {
+    const deleteIcon = task.querySelector("i.delete");
+    deleteIcon?.addEventListener("click", e => {
         e.stopPropagation();
         task.remove();
         removeTaskFromLocalStorage(text);
@@ -62,8 +73,8 @@ function creatingtasks(text,status) {
 
 // TOGGLE TASK STATUS FUNCTION
 
-function toggleTask(task,text) {
-    let storedTasks = getStoredTasks();
+function toggleTask(task:Element,text:string) {
+    const storedTasks:Task[] = getStoredTasks();
     storedTasks.forEach(t => {
         if (t.text === text) {
             t.status = t.status === "pending" ? "done" : "pending";
@@ -75,12 +86,12 @@ function toggleTask(task,text) {
 }
 // FILTERS FUNCTION:
 function setupFilters() {
-    filters.forEach(filter => {
+    filters?.forEach(filter => {
         filter.addEventListener("click",function () {
             filters.forEach(f => f.classList.remove("clicked"));
             filter.classList.add("clicked");
             
-            let allTasks = document.querySelectorAll(".tasks .task");
+            const allTasks = document.querySelectorAll(".tasks .task");
             allTasks.forEach(task => {
                 if (filter.classList.contains("all")) {
                     task.classList.remove("hidden");
@@ -97,19 +108,20 @@ function setupFilters() {
 
 // REMOVE THE TASK FROM LOCAL STORAGE FUNCTION
 
-function removeTaskFromLocalStorage(taskText) {
+function removeTaskFromLocalStorage(taskText:string):void {
 
-    let storedTasks = getStoredTasks();
-    let updatedTasks = storedTasks.filter(t => t.text !== taskText);
+    const storedTasks = getStoredTasks();
+    const updatedTasks = storedTasks.filter(t => t.text !== taskText);
     saveTasks(updatedTasks);
 }
 
 //STORED TASKS FUNCTION:
-function getStoredTasks() {
-    return JSON.parse(localStorage.getItem("tasks")) || [];
+function getStoredTasks():Task[] {
+    const storedTasks = localStorage.getItem("tasks");
+    return storedTasks ? JSON.parse(storedTasks) : [];
 }
 //save tasks in local storage function
-function saveTasks(tasks) {
+function saveTasks(tasks:Task[]) {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
@@ -118,18 +130,17 @@ function saveTasks(tasks) {
 function quotesGen() {
     fetch("../quotes.json")
     .then(result => result.json())
-    .then((myData)=>{
-        let randomNum = Math.floor(Math.random() * myData.length);
-        let quote = myData[randomNum].text;
-        quoteCont.textContent = `"${quote}"`;
+    .then((myData:Quote[])=>{
+        const randomNum = Math.floor(Math.random() * myData.length);
+        const quote = myData[randomNum].text;
+        if(quoteCont) quoteCont.textContent = `"${quote}"`;
     })
 }
 // generateQuoteButton.addEventListener("click",()=>quoteCont())
 
 
-window.onload = function () {
-    getStoredTasks().forEach(task => creatingtasks(task.text ,task.status))
+window.addEventListener("load",()=>{
+    getStoredTasks().forEach(task => creatingtasks({text:task.text ,status:task.status}))
     setupFilters();
     quotesGen();
-
-}
+})
