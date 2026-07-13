@@ -3,16 +3,19 @@
 }
 
 :root{
-    --hoverColor: #6A4AE3;
-    --accentColor: #7C5CFF;
+    --hoverColor: #8B9B7E;
+    --accentColor: #8B9B7E;
     --cardsMainColor: #ffffff;
-    --mainTextColor: #1F2937;
-    --secondaryTextColor: #6B7280;
-    --background-image: radial-gradient(circle at center, #ffffff, #f7e4ffb1);
+    --mainTextColor: #2C2C2C;
+    --secondaryTextColor: #666666;
+    --beigeBg: #F5F1E8;
+    --sageGreen: #8B9B7E;
+    --buttonBg: #E8DCC8;
+    --background-image: linear-gradient(135deg, #f5f1e8 0%, #ffffff 100%);
 }
 body{
     background-image: var(--background-image);
-    font-family: "Inter", sans-serif;
+    font-family: "Fredoka", sans-serif;
 }
 .container{
     margin: 20px auto;
@@ -25,32 +28,38 @@ body{
 }
 .container .title h2{
     font-weight: 700;
-    font-size: 32px;
+    font-size: 36px;
     color: var(--mainTextColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
 }
-.container .title h2 i{
-    color: var(--accentColor);
-    margin-right: 10px;
+.container .title h2 img{
+    width: 55px;
 }
 .container .title p{
-    color: var(--secondaryTextColor);
-    font-size: 16px;
-    margin-top: 5px;
+    display: none;
 }
 /* QUOTE GENERATOR STYLES */
 .container .quote{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--cardsMainColor);
     border-radius: 10px;
     margin-top: 50px;
     padding: 12px 20px;
     color: var(--mainTextColor);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.container .quote img{
+    width: 35px;
 }
 .container .quote p{
-    font-size: 16px;
+    font-family: "Indie Flower", cursive;
+    font-size: 20px;
+    font-weight: bold;
+    margin-inline: 20px;
+    color: var(--mainTextColor);
 }
 /* TO DO LIST STYLES */
 .container .toDo{
@@ -62,37 +71,48 @@ body{
 }
 /* form styles */
 .container .toDo .addTask{
-    background-color: var(--cardsMainColor);
+    background-color: transparent;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid var(--accentColor);
+    padding: 0;
+    border-radius: 30px;
+    border: none;
+    gap: 15px;
 }
 .container .toDo .addTask input{
-    background-color:#e9ebed;
+    background-color: #C9BFA8;
     border: none;
     outline: none;
     font-size: 16px;
     color: var(--mainTextColor);
     width: 90%;
-    margin-right: 10px;
-    padding: 8px 12px;
-    border-radius: 5px;
+    margin-right: 0;
+    padding: 15px 25px;
+    border-radius: 30px;
+    flex: 1;
+}
+.container .toDo .addTask input::placeholder{
+    color: rgba(44, 44, 44, 0.6);
 }
 .container .toDo .addTask button{
-    background-color: var(--mainTextColor);
+    background-color: var(--buttonBg);
     border: none;
-    border-radius: 5px;
-    padding: 8px 12px;
-    font-size: 16px;
-    color: var(--cardsMainColor);
+    border-radius: 50%;
+    padding: 12px 15px;
+    font-size: 20px;
+    color: var(--mainTextColor);
     cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 .container .toDo .addTask button:hover{
-    background-color: #373737;
+    background-color: #D4C7B5;
 }
 /* tasks styles */
 .container .toDo .tasks-container{
@@ -113,29 +133,37 @@ body{
     gap: 10px;
 }
 .container .tasks-container .section-header .filters .filter{
-    background-color: transparent;
+    background-color: var(--cardsMainColor);
     color: var(--mainTextColor);
-    border: 1px solid var(--mainTextColor);
-    border-radius: 5px;
-    padding: 5px 10px;
+    border: 1px solid #E0E0E0;
+    border-radius: 20px;
+    padding: 8px 16px;
     cursor: pointer;
     transition: all 0.3s linear;
+    font-size: 14px;
+    text-transform: capitalize;
 }
-.container .tasks-container .section-header .filters .filter:hover,
+.container .tasks-container .section-header .filters .filter:hover{
+    border-color: var(--sageGreen);
+}
 .container .tasks-container .section-header .filters .filter.clicked{
-    background-color: var(--accentColor);
-    border-color: transparent;
+    background-color: var(--sageGreen);
+    border-color: var(--sageGreen);
     color: var(--cardsMainColor);
 }
 /* tasks list syles */
 .container .tasks-container .tasks{
     margin-top: 20px;
+    background-color: var(--beigeBg);
+    border-radius: 20px;
+    padding: 20px;
 }
 .container .tasks-container .tasks.empty{
     margin-top: 20px;
-    background-color: var(--cardsMainColor);
-    border-radius: 10px;
-    border: 1px dashed var(--accentColor);
+    background-color: var(--beigeBg);
+    border-radius: 20px;
+    border: 1px dashed #D4C7B5;
+    padding: 20px;
 }
 .container .tasks-container .tasks.empty::before{
     content: "No tasks yet. Add one to get started!";
@@ -150,16 +178,17 @@ body{
     display: flex;
     align-items: center;
     margin: 10px 0;
-    padding: 20px;
+    padding: 15px 20px;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: var(--cardsMainColor);
     transition: all 0.1s linear;
     border: 1px solid transparent;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 .container .tasks-container .tasks .task:hover{
-    border: 1px solid var(--accentColor);
+    border: 1px solid #D4C7B5;
+    background-color: #FAFAF8;
 }
 .container .tasks-container .tasks .task i{
     font-size: 16px;
@@ -174,26 +203,28 @@ body{
     color: #f94449;
 }
 .container .tasks-container .tasks .task .check-icon{
-    width: 25px;
-    height: 25px;
-    border: 2px solid var(--mainTextColor);
+    width: 22px;
+    height: 22px;
+    border: 2.5px solid #C9BFA8;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 /* style when task is done */
 .container .tasks-container .tasks .task.done{
     position: relative;
-    opacity: 50%;
+    opacity: 0.6;
     transition: all 0.3s linear;
 }
 .container .tasks-container .tasks .task.done .task-name{
     text-decoration: line-through;
+    color: var(--secondaryTextColor);
 }
 .container .tasks-container .tasks .task.done .check-icon{
-    background-color: var(--accentColor);
+    background-color: var(--sageGreen);
     border: none;
 }
 .container .tasks-container .tasks .task.done .check-icon::after{

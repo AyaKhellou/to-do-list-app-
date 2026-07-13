@@ -133,10 +133,9 @@ function quotesGen() {
     .then((myData:Quote[])=>{
         const randomNum = Math.floor(Math.random() * myData.length);
         const quote = myData[randomNum].text;
-        if(quoteCont) quoteCont.textContent = `"${quote}"`;
+        if(quoteCont) quoteCont.textContent = quote;
     })
 }
-// generateQuoteButton.addEventListener("click",()=>quoteCont())
 
 
 window.addEventListener("load",()=>{
