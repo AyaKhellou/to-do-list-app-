@@ -104,7 +104,7 @@ function saveTasks(tasks) {
 }
 //QUOTE GENERATOR FUNCTION:
 function quotesGen() {
-    fetch("../quotes.json")
+    fetch("quotes.json")
         .then(result => result.json())
         .then((myData) => {
         const randomNum = Math.floor(Math.random() * myData.length);

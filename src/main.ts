@@ -5,6 +5,7 @@ const tasks: HTMLDivElement | null = document.querySelector(".tasks");
 const filters: NodeListOf<HTMLDivElement> | null = document.querySelectorAll(".filter");
 const quoteCont: HTMLParagraphElement | null = document.querySelector(".quote p");
 
+
 //types init:
 
 type Task = {
@@ -128,7 +129,7 @@ function saveTasks(tasks:Task[]) {
 //QUOTE GENERATOR FUNCTION:
 
 function quotesGen() {
-    fetch("../quotes.json")
+    fetch("quotes.json")
     .then(result => result.json())
     .then((myData:Quote[])=>{
         const randomNum = Math.floor(Math.random() * myData.length);
